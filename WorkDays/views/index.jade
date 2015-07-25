@@ -1,0 +1,16 @@
+﻿extends layout
+
+block content
+  .container
+    h1 #{user} Arbeitstage bei Neopoly 
+    #calendar
+block js
+  script(src='js/jquery.min.js')
+  script(src='js/underscore-min.js')
+  script(src='js/calendar.js')
+  script(type='text/javascript').
+     var calendar = $("#calendar").calendar( {
+       tmpl_path: 'tmpls/',
+       view: 'week',
+       events_source : function() {return #{dates};}
+     });
