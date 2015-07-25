@@ -2,12 +2,17 @@
 
 block content
   .container
-    h1 #{user} Arbeitstage bei Neopoly 
+    h1 #{user} workdays at Neopoly
+    div(class="btn-group")
+      button( class="btn btn-primary" data-calendar-nav="prev")="<< Prev"
+      button( class="btn btn-default" data-calendar-nav="today")="Today"
+      button( class="btn btn-primary" data-calendar-nav="next")="Next >>"
     #calendar
 block js
   script(src='js/jquery.min.js')
   script(src='js/underscore-min.js')
   script(src='js/calendar.js')
+  script(src='js/calendar_functions.js')
   script(type='text/javascript').
      var calendar = $("#calendar").calendar( {
        tmpl_path: 'tmpls/',

@@ -48,6 +48,7 @@
     <Content Include="public\css\bootstrap.min.css" />
     <Content Include="public\css\calendar.min.css" />
     <Content Include="public\css\style.styl" />
+    <Content Include="public\favicon.ico" />
     <Content Include="public\tmpls\day.html" />
     <Content Include="public\tmpls\events-list.html" />
     <Content Include="public\tmpls\modal.html" />
