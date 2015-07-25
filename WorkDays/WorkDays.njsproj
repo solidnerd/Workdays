@@ -37,6 +37,7 @@
     <Compile Include="public\js\de-DE.js" />
     <Compile Include="public\js\jquery.min.js" />
     <Compile Include="public\js\underscore-min.js" />
+    <Compile Include="routes\api.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />

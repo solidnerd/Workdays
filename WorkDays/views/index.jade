@@ -12,5 +12,5 @@ block js
      var calendar = $("#calendar").calendar( {
        tmpl_path: 'tmpls/',
        view: 'week',
-       events_source : function() {return #{dates};}
+       events_source : '#{dates}'
      });
