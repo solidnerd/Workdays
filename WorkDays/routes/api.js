@@ -7,7 +7,7 @@ router.get('/dates', function (req, res) {
   var resultArray = new Array();
   var connection = mysql.createConnection( {
     host     : process.env.MYSQL_HOST || 'localhost',
-    port     : process.env.MYSQL_PORT || '3306',
+    port     : process.env.MYSQL_PORTNUMBER || '3306',
     user     : process.env.MYSQL_USER || 'mysql',
     password : process.env.MYSQL_USER_PASSWORD  || 'mysql',
   });
