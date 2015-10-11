@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node server.js"
   },
   "description": "WorkDays",
   "author": {
-    "name": "Niclas",
-    "email": "niclas@mietz.io"
+    "name": "Niclas Mietz",
+    "email": "github@mietz.io"
   },
   "dependencies": {
     "debug": "~2.0.0",
