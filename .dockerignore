@@ -1,0 +1,7 @@
+.git
+.gitignore
+workdays.env
+README.md
+LICENSE
+.dockerignore
+docker-compose.yml
