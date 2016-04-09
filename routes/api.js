@@ -1,44 +1,33 @@
 ﻿var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var calendar = require('../modules/calendar');
 
 /* GET users listing. */
 router.get('/dates', function (req, res) {
-  var resultArray = new Array();
-  var connection = mysql.createConnection( {
-    host     : process.env.MYSQL_HOST || 'localhost',
-    port     : process.env.MYSQL_PORTNUMBER || '3306',
-    user     : process.env.MYSQL_USER || 'mysql',
-    password : process.env.MYSQL_USER_PASSWORD  || 'mysql',
-  });
-  var calendarid = 2;
-  var columns = ['summary', 'startdate', 'enddate']
-  var query = connection.query('SELECT ?? FROM ?? WHERE calendarid = ?', [columns, 'owncloud.oc_clndr_objects', calendarid], function (err, results) {
-    connection.end();
-    var id = 0;
-    if (!err){
-      results.forEach(function (entry) {
-        id++;
-        resultArray.push({
-          "id": id,
-          "title": entry.summary,
-          "url": "http://example.com",
-          "class": "event-important",
-          "start": entry.startdate.getTime(),// Milliseconds
-          "end": entry.enddate.getTime() // Milliseconds
-        });
-      });
-      res.json({
-        "success": 1,
-        "result": resultArray
+  calendar.getEvents().then(function(events){
+    //console.log(events);
+    var results = []
+    var counter = 0
+    for (var i = 0; i < events.length; i++) {
+      counter++;
+      //console.log(Object.keys(calevent));
+      results.push({
+        "id": counter,
+       "title": events[i].name,
+       "url": "http://example.com",
+       "class": "event-important",
+       "start": events[i].starttime*1000,// Milliseconds *1000 is needed for Seconds in the Unix TimeStamp
+       "end": events[i].endtime*1000 // Milliseconds
       });
     }
-    else {
-      console.log('Error while performing Query.');
-      res.json({ success: 0, error: 'Something terrible happened' });
-    }
-  });
+    console.log(results);
+    res.json({success: 1, result: results});
 
+  }).catch(function(errorMessage){
+    console.error('getEvents Error: ' + errorMessage );
+    res.json({success: 0 , error: errorMessage});
+  });
 });
 
 module.exports = router;

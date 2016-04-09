@@ -1,0 +1,10 @@
+version: '2'
+services:
+  workdays:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./workdays.env
+    ports:
+      - "3000:3000"
